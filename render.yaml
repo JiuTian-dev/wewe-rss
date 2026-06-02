@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: wewe-rss
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile.render
+    healthCheckPath: /
+    envVars:
+      - key: AUTH_CODE
+        sync: false
+        value: wuyong2026
+      - key: SERVER_ORIGIN_URL
+        sync: false
+        value: https://wewe-rss.onrender.com
+      - key: MAX_REQUEST_PER_MINUTE
+        value: "60"
+      - key: CRON_EXPRESSION
+        value: "35 5,17 * * *"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: wewe-rss-db
+          property: connectionString
+
+databases:
+  - name: wewe-rss-db
+    plan: free
+    databaseType: mysql
+    postgresOnly: false
