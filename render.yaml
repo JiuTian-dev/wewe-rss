@@ -7,10 +7,8 @@ services:
     healthCheckPath: /
     envVars:
       - key: AUTH_CODE
-        sync: false
         value: wuyong2026
       - key: SERVER_ORIGIN_URL
-        sync: false
         value: https://wewe-rss.onrender.com
       - key: MAX_REQUEST_PER_MINUTE
         value: "60"
